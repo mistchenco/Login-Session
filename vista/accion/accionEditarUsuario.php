@@ -6,6 +6,8 @@ $usuario=['idUsuario' => $datos['idUsuario']];
 $listaUsuario = $abmUsuario->buscar($usuario);
 $objUsuario = $listaUsuario[0];
 $datos['usDesabilitado'] = $objUsuario->getUsDesabilitado();
+$datos['usPass']= md5($datos['usPass']);
+
 
 if($abmUsuario->modificacion($datos)){
     $mensaje="El usuario se modifico con exito";

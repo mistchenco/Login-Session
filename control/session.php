@@ -19,7 +19,7 @@ class session{
             $exito = false;
             if ($usuario != null && $pass != null) {
                 $this->usNombre= $usuario;
-                $this->usPass=  $pass; //md5($pass);
+                $this->usPass= $pass ; //md5($pass);
                 echo $this->usPass . "<br>";
                 $exito = true;
             }
@@ -42,7 +42,7 @@ class session{
                     if ($row['COUNT(*)'] != 0) {
                         $exito = true;
                         $_SESSION['usNombre'] = $this->usNombre;
-                        $_SESSION['usPass'] = md5($this->usPass);
+                        $_SESSION['usPass'] = $this->usPass;
                         $_SESSION['activa'] = true;
                         echo $_SESSION['usPass'];
                     }

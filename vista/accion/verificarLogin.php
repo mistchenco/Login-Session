@@ -3,8 +3,8 @@ include_once '../estructura/cabecera.php';
 $datos=data_submitted();
 $session= new session();
 
-print_r($datos);
-$session->iniciar($datos['usNombre'], $datos['usPass']);
+
+$session->iniciar($datos['usNombre'], md5($datos['usPass']));
 
 
 if($session->validar()){

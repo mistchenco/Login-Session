@@ -124,7 +124,7 @@ class usuario
         return $resp;
     }
 
-    public function listar($parametro = "")
+    public static function listar($parametro = "")
     {
         // echo ' estoy en listar'; 
         $arreglo = array();

@@ -30,7 +30,7 @@ $listaUsuario = $abmUsuario->buscar(null);
         <th scope="col" class="text-center">Nombre de Usuario</th>
         <th scope="col" class="text-center"> Password</th>
         <th scope="col" class="text-center">Email</th>
-        <th scope="col" class="text-center">Deshabilitado</th>
+        <th scope="col" class="text-center">Estado</th>
         <th scope="col" class="text-center">Editar Datos</th>
         <th scope="col" class="text-center">Deshabilitar Usuario</th>
       </tr>
@@ -53,15 +53,15 @@ $listaUsuario = $abmUsuario->buscar(null);
           echo "<td class='text-center'><i class='far fa-times-circle'></i></td>";
         }
         echo "<form action='editarUsuario.php' method='post'>
-<td class='text-center'>
-<input name='idUsuario' id='idUsuario' type='hidden' value='$idUsuario'>
-<button class='btn btn-dark' type='submit'><i class='fas fa-edit'></i>
-</button></td></form>
-<form action='../accion/eliminarUsuario.php' method='post'>
-<td class='text-center'>
-<input name='idUsuario' id='idUsuario' type='hidden' value='$idUsuario'>
-<button class=' btn btn-dark' type='submit'>
-<i class='fas fa-user-times'></i></i></button></td></form></tr>";
+        <td class='text-center'>
+        <input name='idUsuario' id='idUsuario' type='hidden' value='$idUsuario'>
+        <button class='btn btn-dark' type='submit'><i class='fas fa-edit'></i>
+        </button></td></form>
+        <form action='../accion/eliminarUsuario.php' method='post'>
+        <td class='text-center'>
+        <input name='idUsuario' id='idUsuario' type='hidden' value='$idUsuario'>
+        <button class=' btn btn-dark' type='submit'>
+        <i class='fas fa-user-times'></i></i></button></td></form></tr>";
       }
       if (isset($_GET['Message'])) {
         print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';

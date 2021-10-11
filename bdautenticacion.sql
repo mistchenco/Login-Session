@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2021 a las 17:48:03
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Tiempo de generación: 12-10-2021 a las 01:23:44
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -59,9 +58,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `usNombre`, `usPass`, `usMail`, `usDesabilitado`) VALUES
-(0, 'gaston', 'alberdi', 'prueba15@gmail.com', 0),
-(1, 'Augusto', 'facultad12', 'agusperceval@hotmail.com', 1),
-(3, 'Eluney Salvaro', 'facultad2', 'eluney@gmail.com', 0);
+(0, 'usuario3', '5c4d87df54819db040963abaa7d2fe21', 'info@gmil.com', 1),
+(1, 'Augusto', 'd396d55189db35d2cddc82ba7742b129', 'agusperceval@hotmail.com', 1),
+(3, 'Eluney Salvaro', '8d27f384c42ce638d8607e500b04c3b7', 'eluney@gmail.com', 1),
+(4, 'Jota', '34aaa13383da9861d3115c1b07ca7905', 'nomelose@nojodas.com', 1);
 
 -- --------------------------------------------------------
 

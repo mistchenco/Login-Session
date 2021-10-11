@@ -5,7 +5,7 @@ $abmUsuario = new abmUsuario();
 $listaUsuario = $abmUsuario->buscar($datos);
 $idUsuario = $datos['idUsuario'];
 $objUsuario = $listaUsuario[0];
-print_r($objUsuario);
+//print_r($objUsuario);
 $datos['usNombre'] = $objUsuario->getUsNombre();
 $datos['usPass'] = $objUsuario->getUsPass();
 $datos['usMail'] = $objUsuario->getUsMail();
