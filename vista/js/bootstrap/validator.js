@@ -1,5 +1,5 @@
 $(document).ready(function () {
-$("#tp5ejercicio2").bootstrapValidator({
+$('#tp5ejercicio2').bootstrapValidator({
   message: "Este valor no es valido",
 
   feedbackIcons: {
@@ -49,7 +49,7 @@ $("#tp5ejercicio2").bootstrapValidator({
 });
 
 $(document).ready(function () {
-  $("#tp5ej4-2").bootstrapValidator({
+  $('#tp5ej4-2').bootstrapValidator({
     message: "Este valor no es valido",
   
     feedbackIcons: {
