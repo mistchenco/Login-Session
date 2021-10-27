@@ -9,12 +9,12 @@ class rol{
     public function __construct(){
         $this->idRol = '';
         $this->rolDescripcion = '';
-        $this->mensajeOperacion = ''; 
+      
     }
 // METODOS SETTERS
-    public function setear($idRol , $rolDescripcion){
-        $this->setIdRol($idRol);
-        $this->setRolDescripcion($rolDescripcion);
+    public function setear($datos){
+        $this->setIdRol($datos['idRol']);
+        $this->setRolDescripcion($datos['rolDescripcion']);
     }
 
     public function setIdRol($idRol){
@@ -53,7 +53,7 @@ class rol{
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->setear($row['idRol'],$row['rolDescripcion']);
+                    $this->setear(['idRol'=>$row['idRol'], 'rolDescripcion'=>$row['rolDescripcion']]);
                 }
             }
         } else {
@@ -76,8 +76,9 @@ class rol{
 
                 while ($row = $base->Registro()) {
                     $obj = new rol();
-                    $obj->setear($row['idRol'], $row['rolDescripcion']);
+                    $obj->setear(['idRol'=>$row['idRol'], 'rolDescripcion'=>$row['rolDescripcion']]);
                     array_push($arreglo, $obj);
+                 
                 }
             }
         } else {

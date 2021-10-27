@@ -46,6 +46,12 @@ class abmRol{
         $resp = false;
         if ($this->seteadosCamposClaves($param)) {
             $elObjtTabla = $this->cargarObjeto($param);
+            $abmUsuariorol = new abmUsuarioRol();
+            $arregloRoles = $abmUsuariorol->buscar($param);
+            foreach ($arregloRoles as $objRol) {
+                $abmUsuariorol->baja($param);
+            }
+
             if ($elObjtTabla != null and $elObjtTabla->eliminar()) {
                 $resp = true;
             }
@@ -79,7 +85,7 @@ class abmRol{
      */
     public function buscar($param)
     {
-        // echo 'estoy buscando'; 
+         
         $where = " true ";
         if ($param <> NULL) {
             if (isset($param['idRol']))
@@ -91,4 +97,3 @@ class abmRol{
         return $arreglo;
     }
 }
-?>

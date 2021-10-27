@@ -3,6 +3,8 @@ include_once '../../configuracion.php';
 $sesion = new session();
 
 $datos = data_submitted();
+$rolSesion = $sesion->getRol();
+$objUsuario=$sesion->getUsuario();
 
 if (!$sesion->activa()) {
   header('Location: index.php');
@@ -10,10 +12,11 @@ if (!$sesion->activa()) {
   include_once '../estructura/cabecera.php';
 }
 
-echo "<h4>Usted esta Logueado como: {$_SESSION['usNombre']}</h4>";
+echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
 
 include_once "../estructura/cabecera.php";
 $abmUsuario = new abmUsuario();
+$abmRol = new abmUsuarioRol();
 $listaUsuario = $abmUsuario->buscar(null);
 
 ?>
@@ -30,6 +33,7 @@ $listaUsuario = $abmUsuario->buscar(null);
         <th scope="col" class="text-center">Nombre de Usuario</th>
         <th scope="col" class="text-center"> Password</th>
         <th scope="col" class="text-center">Email</th>
+        <th scope="col" class="text-center">Rol</th>
         <th scope="col" class="text-center">Estado</th>
         <th scope="col" class="text-center">Editar Datos</th>
         <th scope="col" class="text-center">Deshabilitar Usuario</th>
@@ -40,14 +44,22 @@ $listaUsuario = $abmUsuario->buscar(null);
 
       foreach ($listaUsuario as $objUsuario) {
         $idUsuario = $objUsuario->getIdUsuario();
+
+        $datos['idUsuario'] = $idUsuario;
+        $listaRol = $abmRol->buscar($datos);
+
         echo '<tr><td class="text-center" style="width:200px;">' . $objUsuario->getIdUsuario() . '</td>';
         echo '<td class="text-center" style="width:200px;">' . $objUsuario->getUsNombre() . '</td>';
         echo '<td class="text-center" style="width:200px;">' . $objUsuario->getUsPass() . '</td>';
         echo '<td class="text-center" style="width:200px;">' . $objUsuario->getUsMail() . '</td>';
-
+        foreach ($listaRol as $rol) {
+          $objRol = $rol->getObjRol();
+          echo '<td class="text-center" style="width:200px;">' . $objRol->getRolDescripcion() . '</td>';
+        }
         '</tr>';
 
         if ($objUsuario->getUsDesabilitado()) {
+
           echo "<td class='text-center'><i class='far fa-check-circle'></i></td>";
         } else {
           echo "<td class='text-center'><i class='far fa-times-circle'></i></td>";

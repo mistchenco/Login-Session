@@ -16,7 +16,7 @@ class BaseDatos extends PDO
     {
         $this->engine = 'mysql';
         $this->host = 'localhost';
-        $this->database = 'bdautenticacion';
+        $this->database = 'autenticacion';
         $this->user = 'root';
         $this->pass = '';
         $this->debug = true;
@@ -170,12 +170,14 @@ class BaseDatos extends PDO
     {
         $cant = -1;
         $resultado = parent::query($sql);
+       
         if (!$resultado) {
             $this->analizarDebug();
         } else {
 
             $arregloResult = $resultado->fetchAll();
             $cant = count($arregloResult);
+            
             $this->setIndice(0);
             $this->setResultado($arregloResult);
         }

@@ -1,5 +1,5 @@
 <?php
-class AbmUsuarioRol {
+class abmUsuarioRol {
 	 /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
      * @param array $param
@@ -11,7 +11,12 @@ class AbmUsuarioRol {
         //print_r($param);
 	 	if( array_key_exists('idRol',$param) and array_key_exists('idUsuario',$param)){
 	 		$objUsuarioRol = new usuarioRol();
-            $objUsuarioRol->setear($param['objUsuario'], $param['objRol']);
+             $abmUsuario=new abmUsuario();
+             $objUsuario=$abmUsuario->buscar(['idUsuario'=>$param['idUsuario']]);
+             $abmRol=new abmRol();
+            $objRol=$abmRol->buscar(['idRol'=>$param['idRol']]);
+
+            $objUsuarioRol->setear($objUsuario[0],$objRol[0]);
         }
         return $objUsuarioRol;
     }
@@ -84,8 +89,7 @@ class AbmUsuarioRol {
      * @return boolean
      */
     public function modificacion($param){
-        //echo "Estoy en modificacion";
-        //print_R($param);
+        
     	$resp = false;
     	if ($this->seteadosCamposClaves($param)){
 
@@ -106,7 +110,7 @@ class AbmUsuarioRol {
      */
 
     public function buscar($param){
-        // print_R ($param);
+         
 
     	$where = " true ";
     	if ($param<>NULL){
@@ -115,7 +119,8 @@ class AbmUsuarioRol {
     		if  (isset($param['idrol']))
     			$where.=" and idRol ='".$param['idRol']."'";
     	}
-        $objUsuarioRol= new UsuarioRol();
+        $objUsuarioRol= new usuarioRol();
+        
         $arreglo = $objUsuarioRol->listar($where);
         return $arreglo;
 

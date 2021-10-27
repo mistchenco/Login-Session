@@ -1,16 +1,20 @@
 <?php
 include_once '../../configuracion.php';
-$sesion = new session();
+$sesion= new session();
+$objUsuario=$sesion->getUsuario();
 
-$datos = data_submitted();
-
+$datos=data_submitted();
 if (!$sesion->activa()) {
-    header('Location: index.php');
+    echo "no hay sesion activa";
+     header('Location: login.php');
 }else{
+    
 include_once '../estructura/cabecera.php';
+
+
 }
 
-echo "<h4>Bienvenido {$_SESSION['usNombre']}</h4>";
+echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
 
 echo '<form action="../accion/cerrarSesion.php">
 <button  type="submit" class="btn btn-danger fas fa-sign-out-alt">

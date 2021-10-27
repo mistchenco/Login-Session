@@ -1,12 +1,13 @@
 <?php
 include_once '../estructura/cabecera.php';
 $sesion = new session();
+$objUsuario=$sesion->getUsuario();
 
 $datos = data_submitted();
 
 if ($sesion->activa()) {
    
-    echo "<h4>Usted Esta Logueado como {$_SESSION['usNombre']}</h4>";
+   echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
 
 }else{
 
