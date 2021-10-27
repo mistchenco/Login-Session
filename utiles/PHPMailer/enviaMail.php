@@ -10,7 +10,7 @@ require 'PHPMailer.php';
 require 'SMTP.php';
 
 /**
- * Creamos la funcion enviarMail para que pueda ser utilizada en distintos momentos dependendiento de la implementacion
+ * Creamos la clase enviarMail para que pueda ser utilizada en distintos momentos dependendiento de la implementacion
  */
 class enviarMail{
  
@@ -61,11 +61,11 @@ class enviarMail{
 
             // Content
             $this->mail->isHTML(true); // Enviamos en formato html
-            $this->mail->Subject = $mailSubject; 
-            $this->mail->Body    = $mailBody;
-            $this->mail->AltBody = 'Su gestor de correos no soporta HTML.';
+            $this->mail->Subject = $mailSubject; // El Asunto del Mail
+            $this->mail->Body    = $mailBody; //Contenido del Mail
+            $this->mail->AltBody = 'Su gestor de correos no soporta HTML.';//Se envia en caso de que el cliente no soporte html
 
-            $this->mail->send();
+            $this->mail->send(); //Funcion que envia mail
             return true;
         } catch (Exception $e) {
             return "Ocurrió un error al enviar el correo: {$this->mail->ErrorInfo}";
