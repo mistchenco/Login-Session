@@ -127,7 +127,7 @@ class usuario
         return $resp;
     }
 
-    public function listar($parametro = "")
+    public static function listar($parametro = "")
     {
 
         $arreglo = array();
