@@ -52,13 +52,16 @@ $listaUsuario = $abmUsuario->buscar(null);
         echo '<td class="text-center" style="width:200px;">' . $objUsuario->getUsNombre() . '</td>';
         echo '<td class="text-center" style="width:200px;">' . $objUsuario->getUsPass() . '</td>';
         echo '<td class="text-center" style="width:200px;">' . $objUsuario->getUsMail() . '</td>';
+        $descripcion="";
         foreach ($listaRol as $rol) {
           $objRol = $rol->getObjRol();
-          echo '<td class="text-center" style="width:200px;">' . $objRol->getRolDescripcion() . '</td>';
+          $descripcion=$descripcion.$objRol->getRolDescripcion().'</br>';
+         
         }
+        echo '<td class="text-center" style="width:200px;">' . $descripcion . '</td>';
         '</tr>';
 
-        if ($objUsuario->getUsDesabilitado()) {
+        if ($objUsuario->getUsDesabilitado()== null || $objUsuario->getUsDesabilitado()=="0000-00-00 00:00:00") {
 
           echo "<td class='text-center'><i class='far fa-check-circle'></i></td>";
         } else {

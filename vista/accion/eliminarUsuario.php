@@ -10,10 +10,10 @@ $datos['usNombre'] = $objUsuario->getUsNombre();
 $datos['usPass'] = $objUsuario->getUsPass();
 $datos['usMail'] = $objUsuario->getUsMail();
 
-if ($objUsuario->getUsDesabilitado()) {
-    $datos['usDesabilitado'] = 0;
+if ($objUsuario->getUsDesabilitado()=="0000-00-00 00:00:00") {
+    $datos['usDesabilitado'] = date('Y-m-d h:i:s a', time());
 } else {
-    $datos['usDesabilitado'] = 1;
+    $datos['usDesabilitado'] = "0000-00-00 00:00:00";
 }
 print_r($datos);
 $exito = $abmUsuario->modificacion($datos);
